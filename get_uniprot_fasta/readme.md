@@ -3,9 +3,9 @@ UniProtからタンパク質のアミノ酸配列を取得する際、少数で�
 APIを利用する際、任意の条件（例えばヒトのキュレーション済みタンパク質）でフィルタリングされるタンパク質を一斉にダウンロードする方法は公式HPに説明がされている一方、「EntryIDで指定したタンパク質のアミノ酸配列を一斉にダウンロード」する方法は公開されていない。
 
 ## 少数の配列の場合
-少数の配列（例えば1000以下）であれば、EntryIDを１列に並べたテキストを指定してWhile文で繰り返しダウンロードするのが便利である。
+少数の配列（例えば1000以下）であれば、EntryIDを１列に並べたテキスト`id_list.txt`を指定してWhile文で繰り返しダウンロードするのが便利である。
 ```
-while read acc; do curl -sS "https://rest.uniprot.org/uniprotkb/${acc}.fasta"; done < download_id.txt > download_protein.fasta
+while read acc; do curl -sS "https://rest.uniprot.org/uniprotkb/${acc}.fasta"; done < id_list.txt > output.fasta
 ```
 curlの`-s`オプションは進捗状況の表示を非表示にするオプションであり、`-S`はエラーを表示するオプションである。
 
